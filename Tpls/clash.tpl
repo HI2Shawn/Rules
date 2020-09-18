@@ -9,11 +9,18 @@ external-controller: :9090
 dns:
   enable: true
   listen: 0.0.0.0:53
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   nameserver:
-    - https://doh.rixcloud.dev/dns-query
-    - https://118.31.13.131/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://dns.wcc.best/dns-query
     - https://139.224.112.177/dns-query
+  fallback:
+    - https://doh.rixcloud.dev/dns-query
+    - https://doh.xeton.dev/dns-query
+  fake-ip-filter:
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - 'www.msftconnecttest.com'
 {% endif %}
 {% endif %}
 
